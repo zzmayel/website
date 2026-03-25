@@ -32,14 +32,9 @@ header:active h1{letter-spacing:0.05em}
 .x::before,.x::after{content:'';position:absolute;background:var(--accent)}
 .x::before{width:10px;height:1px;top:4.5px;left:0}
 .x::after{width:1px;height:10px;top:0;left:4.5px}
-.nl{display:block;font-size:0.60rem;font-weight:300;letter-spacing:0.10em;line-height:1.85;color:var(--tx);cursor:pointer;transition:opacity 0.18s;text-align:center;white-space:nowrap}
-.nl:hover{opacity:0.35}
+.nl{display:block;font-size:0.60rem;font-weight:300;letter-spacing:0.10em;line-height:1.85;color:var(--tx);cursor:pointer;transition:opacity 0.18s,transform 0.2s;text-align:center;white-space:nowrap}
+.nl:hover{opacity:0.35;transform:scale(1.08)}
 .nl.on{font-weight:700;letter-spacing:0.04em}
-
-.x{display:block;width:10px;height:10px;position:relative;flex-shrink:0}
-.x::before,.x::after{content:'';position:absolute;background:var(--accent)}
-.x::before{width:10px;height:1px;top:4.5px;left:0}
-.x::after{width:1px;height:10px;top:0;left:4.5px}
 #ph{display:flex;align-items:center;justify-content:center}
 #pa{overflow:hidden}
 .ab-track{position:absolute;inset:0;display:flex;transition:transform var(--ease)}
@@ -98,7 +93,7 @@ header:active h1{letter-spacing:0.05em}
 #lb-close{position:fixed;top:16px;right:16px;font-size:1.4rem;color:var(--accent);opacity:0.7;cursor:pointer;background:none;border:none;z-index:1000;transition:opacity 0.2s;line-height:1;display:none;}
 #lb.open #lb-close{display:block;}
 #lb-close:hover{opacity:1}
-#mobile-nav{display:none;}
+#mobile-nav{display:none}
 
 @media(max-width:700px){
   :root{--margin:16px;--hh:44px;}
@@ -233,7 +228,7 @@ header:active h1{letter-spacing:0.05em}
 
 <div id='pcont' class='page'>
   <div class='ci'>
-    <a href="/cdn-cgi/l/email-protection#3b565a5e5715415a535a5d7b5e4b5d57155853"><span class="__cf_email__" data-cfemail="6904080c0547130801080f290c190f05470a01">[email&#160;protected]</span></a>
+    <a href='mailto:mael.zahaf@epfl.ch'>mael.zahaf@epfl.ch</a>
     <span>Lausanne — CH</span>
   </div>
 </div>
@@ -328,29 +323,29 @@ var PROJECTS = [
     ]
   },
   {
-    name: 'Hétérotopies',
-    loc: 'Lausanne, CH',
-    year: '2025',
-    type: 'Maquette, représentation',
-    atelier: 'TEXAS',
-    cover: 'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_1.jpg',
-    desc: "Cette image représente une photographie de maquette réalisée avec un assemblage de papier. L'assemblage de plans, de surfaces imprimées et d'objets réduits compose une scène domestique fragmentaire, à la fois familière et artificielle. L'espace évoque une chambre et une salle de bain, suggérant implicitement la nuit de noces comme moment inaugural, intime et ritualisé.\n\nCependant, cette scène ne cherche pas à représenter une réalité habitée, mais plutôt à produire une distance critique. En ce sens, elle peut être comprise comme une \"hétérotopie\" au sens de Michel Foucault dans Des espaces autres : un espace en dehors du monde, à la fois réel et irréel, qui juxtapose plusieurs régimes de sens. Ici, il est question d'intimité domestique, la mise en scène symbolique du couple, et la neutralité abstraite de la maquette.\n\nLe recours à la maquette en papier renforce cette ambiguïté. Les matériaux pauvres, les surfaces planes et les détails volontairement simplifiés inscrivent l'image dans une logique de représentation plutôt que de simulation. La scène devient alors un espace construit pour être regardé, un lieu de projection mentale plutôt qu'un lieu vécu.\n\nCette approche s'inscrit dans une proximité avec le travail de Thomas Demand, dont les reconstructions en papier rejouent des situations existantes en les vidant de leur contingence. Ici, la maquette ne reproduit pas un événement précis, mais construit une image archétypale, suspendue entre fiction et réalité, où l'espace domestique devient un objet critique.",
-    imgs: [
-      {r:'4/3',src:'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_1.jpg'},
-      {r:'4/3',src:'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_2.jpg'}
-    ]
-  },
-  {
     name: 'Constructing The View 1',
     loc: 'Lausanne, CH',
     year: '2022',
     type: 'Image, recherche',
     atelier: 'CTW — Philipp Schaerer',
     cover: 'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw1_1.jpg',
-    desc: "L'intérêt de l'exercice est de concevoir des architectures imaginaires, conçues comme des assemblages de surfaces hétérogènes. Chaque bâtiment est composé à partir d'un collage de matériaux divers dont la juxtaposition produit une image à la fois abstraite et construite.\n\nL'intention n'est pas de proposer un projet architectural en soi, mais plutôt d'explorer une méthode de conception par l'image. Ces compositions fonctionnent comme des objets intermédiaires : elles précèdent le projet, en testant des rapports de masses, de textures et de proportions sans contrainte programmatique.\n\nCes architectures spéculatives agissent comme un outil de recherche visuelle, où le projet pourrait potentiellement émerger après coup. L'image devient alors un terrain d'expérimentation autonome, capable de générer des intuitions spatiales et matérielles avant toute formalisation architecturale.",
+    desc: "L'intérêt de l'exercice est de concevoir des architectures imaginaires, conçues comme des assemblages de surfaces hétérogènes. Chaque bâtiment est composé à partir d'un collage de matériaux divers dont la juxtaposition produit une image à la fois abstraite et construite.\n\nL'intention n'est pas de proposer un projet architectural en soi, mais plutôt d'explorer une méthode de conception par l'image. Ces compositions fonctionnent comme des objets intermédiaires : elles précèdent le projet, en testant des rapports de masses, de textures et de proportions sans contrainte programmatique.",
     imgs: [
       {r:'4/3',src:'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw1_1.jpg'},
       {r:'4/3',src:'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw1_2.jpg'}
+    ]
+  },
+  {
+    name: 'Hétérotopies',
+    loc: 'Lausanne, CH',
+    year: '2025',
+    type: 'Maquette, représentation',
+    atelier: 'TEXAS',
+    cover: 'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_1.jpg',
+    desc: "Cette image représente une photographie de maquette réalisée avec un assemblage de papier composant une scène domestique fragmentaire. Elle peut être comprise comme une hétérotopie au sens de Foucault : un espace réel et irréel à la fois, juxtaposant intimité domestique et neutralité abstraite de la maquette.\n\nLe recours au papier renforce cette ambiguïté. La scène devient un espace construit pour être regardé, un lieu de projection mentale. Cette approche s'inscrit dans une proximité avec Thomas Demand.",
+    imgs: [
+      {r:'4/3',src:'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_1.jpg'},
+      {r:'4/3',src:'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_2.jpg'}
     ]
   },
   {
@@ -360,7 +355,7 @@ var PROJECTS = [
     type: 'Image, montage',
     atelier: 'CTW — Philipp Schaerer',
     cover: 'https://zzmayel.github.io/website/project%206%20constructing%20the%20view%202/mael-zahaf_ctw_2_1.jpeg',
-    desc: "Ces images sont construites par assemblage d'éléments hétérogènes issus de contextes réels (fragments d'architecture ordinaire, paysages, objets ou structures) recomposés en une seule image cohérente. Par le montage, ces éléments conservent leur qualité documentaire tout en étant déplacés de leur contexte d'origine.\n\nL'enjeu est de produire des images qui paraissent réalistes dans leur matérialité, leur lumière et leur précision photographique, mais dont la logique spatiale demeure profondément irréelle. Les situations représentées sont plausibles dans le détail, mais impossibles dans leur totalité.\n\nCe travail repose ainsi sur une tension entre reconnaissance et étrangeté. L'image est immédiatement lisible : elle mobilise des formes connues, des typologies existantes, mais elle résiste à une interprétation stable. Les rapports d'échelle, de structure ou de situation produisent un léger déplacement, une dissonance qui empêche toute adhésion complète au réel.\n\nL'assemblage devient alors outil de projet : en manipulant le réel plutôt qu'en l'inventant ex nihilo, il permet de révéler ses limites, ses contradictions et ses potentiels latents. Ces images ne décrivent pas un projet, mais construisent un champ de possibilités où le projet pourrait advenir.",
+    desc: "Ces images sont construites par assemblage d'éléments hétérogènes issus de contextes réels. Par le montage, ils conservent leur qualité documentaire tout en étant déplacés de leur contexte d'origine.\n\nL'enjeu est de produire des images réalistes dans leur matérialité mais dont la logique spatiale demeure irréelle. Ce travail repose sur une tension entre reconnaissance et étrangeté qui empêche toute adhésion complète au réel.",
     imgs: [
       {r:'4/3',src:'https://zzmayel.github.io/website/project%206%20constructing%20the%20view%202/mael-zahaf_ctw_2_1.jpeg'},
       {r:'4/3',src:'https://zzmayel.github.io/website/project%206%20constructing%20the%20view%202/mael-zahaf_ctw_2_2.jpeg'},
@@ -397,16 +392,19 @@ function applyNav(page){
   var vpH=window.innerHeight-HH;
   var vpW=window.innerWidth;
   var pos=compute(page,vpH);
-  var pad=Math.round(Math.max(24, vpW*0.06));
+  var isMobile=vpW<=700;
+  var padX=isMobile?24:Math.max(24,vpW*0.06);
+  var cxRowL=padX;
+  var cxRowW=vpW-padX*2;
   els.forEach(function(el,i){
     var isCx=el.classList.contains('cx-row');
     var cy=pos[i],elH=isCx?XW:(el.offsetHeight||22);
     el.style.top=Math.round(cy-elH/2)+'px';
-    el.style.left=pad+'px';
-    el.style.width=(vpW-pad*2)+'px';
+    el.style.left=Math.round(cxRowL)+'px';
+    el.style.width=Math.round(cxRowW)+'px';
+    el.style.transform='none';
     el.style.transition='top 0.65s cubic-bezier(0.4,0,0.2,1)';
   });
-}
 }
 function showPage(id){
   if(id===cur&&id!=='home'&&id!=='project')id='home';
@@ -414,6 +412,7 @@ function showPage(id){
   if(prevEl)prevEl.classList.remove('active');
   var navId=(id==='project')?'projects':id;
   els.slice(1,4).forEach(function(el){el.classList.toggle('on',el.id==='nl-'+navId);});
+  // Mobile nav
   ['mn-about','mn-projects','mn-contacts'].forEach(function(mid){
     var mel=document.getElementById(mid);
     if(mel)mel.classList.toggle('on',mel.id==='mn-'+navId);
@@ -676,36 +675,6 @@ var PROJECTS_EN = [
     cover: PROJECTS[2].cover,
     imgs: PROJECTS[2].imgs,
     desc: "The Beat Generation represents a sulfurous and unbearable literary movement of the 20th century. Advocating spirituality and \"beatitude\", the beatniks seek travel — whether physical or psychedelic.\n\nThe project is located on the outskirts of Marseille, in the heart of the Pointe Rouge neighborhood. Conceived as a poetry center dedicated to the heirs of beatnik counter-culture, it houses a residence for six to ten artists, an exhibition room, a library, a conference room, and a café.\n\nMore than a simple place, it embodies an experience of space, an oscillation between passage and rest. Anchored at the end of a dead end, it perforates and transgresses it through a play of patios that open breaches in the urban enclave.\n\nThe architecture itself adopts a singular rhythm: a series of small buildings, each composed of two blind stone facades and two fully open gable ends, alternating between closure and transparency."
-  },
-  {
-    name: 'Heterotopies',
-    loc: 'Lausanne, CH',
-    year: '2025',
-    type: 'Model, representation',
-    atelier: 'TEXAS',
-    cover: PROJECTS[3].cover,
-    imgs: PROJECTS[3].imgs,
-    desc: "This image is a photograph of a paper model. The assembly of plans, printed surfaces, and miniature objects composes a fragmentary domestic scene, simultaneously familiar and artificial. The space evokes a bedroom and bathroom, implicitly suggesting the wedding night as an inaugural, intimate, and ritualized moment.\n\nHowever, this scene does not seek to represent an inhabited reality, but rather to produce a critical distance. In this sense, it can be understood as a 'heterotopia' in the sense of Michel Foucault's Of Other Spaces: a space outside the world, simultaneously real and unreal, juxtaposing several regimes of meaning — domestic intimacy, the symbolic staging of the couple, and the abstract neutrality of the model.\n\nThe use of a paper model reinforces this ambiguity. The humble materials, flat surfaces, and deliberately simplified details inscribe the image within a logic of representation rather than simulation. The scene becomes a space constructed to be looked at — a site of mental projection rather than a lived place.\n\nThis approach is close to the work of Thomas Demand, whose paper reconstructions replay existing situations by emptying them of contingency. Here, the model does not reproduce a specific event, but constructs an archetypal image, suspended between fiction and reality, where domestic space becomes a critical object."
-  },
-  {
-    name: 'Constructing The View 1',
-    loc: 'Lausanne, CH',
-    year: '2022',
-    type: 'Image, research',
-    atelier: 'CTW — Philipp Schaerer',
-    cover: PROJECTS[3].cover,
-    imgs: PROJECTS[3].imgs,
-    desc: "The exercise consists in designing imaginary architectures conceived as assemblages of heterogeneous surfaces. Each building is composed from a collage of diverse materials whose juxtaposition produces an image that is simultaneously abstract and constructed.\n\nThe intention is not to propose an architectural project as such, but rather to explore a method of design through image-making. These compositions function as intermediary objects: they precede the project, testing relationships of mass, texture, and proportion without programmatic constraints.\n\nThese speculative architectures act as tools for visual research, where a project could potentially emerge afterwards. The image thus becomes an autonomous field of experimentation, capable of generating spatial and material intuitions before any architectural formalization."
-  },
-  {
-    name: 'Constructing The View 2',
-    loc: 'Lausanne, CH',
-    year: '2024',
-    type: 'Image, montage',
-    atelier: 'CTW — Philipp Schaerer',
-    cover: PROJECTS[4].cover,
-    imgs: PROJECTS[4].imgs,
-    desc: "These images are built by assembling heterogeneous elements drawn from real contexts — fragments of ordinary architecture, landscapes, objects, or structures — recomposed into a single coherent image. Through montage, these elements retain their documentary quality while being displaced from their original context.\n\nThe aim is to produce images that appear realistic in their materiality, lighting, and photographic precision, yet whose spatial logic remains deeply unreal. The situations depicted are plausible in detail, but impossible in their totality.\n\nThis work rests on a tension between recognition and strangeness. The image is immediately legible — it mobilizes familiar forms and existing typologies — yet resists stable interpretation. Relationships of scale, structure, or situation produce a slight displacement, a dissonance that prevents any complete adherence to the real.\n\nMontage becomes a design tool: by manipulating the real rather than inventing from nothing, it reveals its limits, contradictions, and latent potentials. These images do not describe a project, but construct a field of possibilities where a project might emerge."
   }
 ];
 
@@ -714,21 +683,24 @@ var _currentProjectIdx = -1;
 function buildAboutSlides(lang){
   var t=I18N[lang];
   var track=document.getElementById('ab-track');
-  // Rebuild all slides — replace innerHTML of each original slide
   var allSlides=Array.from(track.querySelectorAll('.ab-slide'));
+  var N=t.ab_slides.length;
   allSlides.forEach(function(slide){
     var idx=parseInt(slide.getAttribute('data-slide-idx'));
-    if(isNaN(idx)||!t.ab_slides[idx])return;
+    if(isNaN(idx))return;
     var sd=t.ab_slides[idx];
-    var html='<div class="ab-h">'+sd.h+'</div><div class="ab-body">';
-    sd.entries.forEach(function(en){
-      html+='<div class="ab-entry"><strong>'+en.strong+'</strong>';
-      if(en.descs)en.descs.forEach(function(d){html+='<span class="ab-desc">'+d+'</span>';});
-      if(en.yr)html+='<span class="ab-yr">'+en.yr+'</span>';
-      html+='</div>';
+    if(!sd)return;
+    slide.querySelector('.ab-h').textContent=sd.h;
+    var body=slide.querySelector('.ab-body');
+    var entries=Array.from(body.querySelectorAll('.ab-entry'));
+    sd.entries.forEach(function(en,j){
+      if(!entries[j])return;
+      entries[j].querySelector('strong').innerHTML=en.strong;
+      var descs=Array.from(entries[j].querySelectorAll('.ab-desc'));
+      if(en.descs){en.descs.forEach(function(d,k){if(descs[k])descs[k].textContent=d;});}
+      var yr=entries[j].querySelector('.ab-yr');
+      if(yr&&en.yr)yr.textContent=en.yr;
     });
-    html+='</div>';
-    slide.innerHTML=html;
   });
 }
 
