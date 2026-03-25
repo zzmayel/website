@@ -98,6 +98,7 @@ header:active h1{letter-spacing:0.05em}
 #lb-close{position:fixed;top:16px;right:16px;font-size:1.4rem;color:var(--accent);opacity:0.7;cursor:pointer;background:none;border:none;z-index:1000;transition:opacity 0.2s;line-height:1;display:none;}
 #lb.open #lb-close{display:block;}
 #lb-close:hover{opacity:1}
+#mobile-nav{display:none;}
 
 @media(max-width:700px){
   :root{--margin:16px;--hh:44px;}
@@ -396,17 +397,16 @@ function applyNav(page){
   var vpH=window.innerHeight-HH;
   var vpW=window.innerWidth;
   var pos=compute(page,vpH);
-  var cxCL=snapX(vpW*0.30),cxCR=snapX(vpW*0.70);
-  var cxRowW=cxCR-cxCL+XW,cxRowL=cxCL-XW/2;
+  var pad=Math.round(Math.max(24, vpW*0.06));
   els.forEach(function(el,i){
     var isCx=el.classList.contains('cx-row');
     var cy=pos[i],elH=isCx?XW:(el.offsetHeight||22);
     el.style.top=Math.round(cy-elH/2)+'px';
-    el.style.left=Math.round(cxRowL)+'px';
-    el.style.width=Math.round(cxRowW)+'px';
-    el.style.transform='none';
+    el.style.left=pad+'px';
+    el.style.width=(vpW-pad*2)+'px';
     el.style.transition='top 0.65s cubic-bezier(0.4,0,0.2,1)';
   });
+}
 }
 function showPage(id){
   if(id===cur&&id!=='home'&&id!=='project')id='home';
