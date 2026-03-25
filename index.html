@@ -227,7 +227,7 @@ header:active h1{letter-spacing:0.05em}
 
 <div id='pcont' class='page'>
   <div class='ci'>
-    <a href='mailto:mael.zahaf@epfl.ch'>mael.zahaf@epfl.ch</a>
+    <span>mael.zahaf [at] epfl.ch</span>
     <span>Lausanne — CH</span>
   </div>
 </div>
@@ -718,12 +718,4 @@ function openProject(i){
   [{l:t.meta[0],v:p.year},{l:t.meta[1],v:p.loc},{l:t.meta[2],v:p.type},{l:t.meta[3],v:p.atelier}].forEach(function(r){
     if(!r.v)return;
     var row=document.createElement('div');row.className='pd-meta-row';
-    var lbl=document.createElement('div');lbl.className='pd-meta-label';lbl.textContent=r.l;
-    var val=document.createElement('div');val.className='pd-meta-val';val.textContent=r.v;
-    row.appendChild(lbl);row.appendChild(val);meta.appendChild(row);
-  });
-  showPage('project');
-}
-</script>
-</body>
-</html>
+    var lbl=document.createElement('div');lbl.className='pd-meta-labe
