@@ -283,7 +283,6 @@ function applyNav(page){
 function showPage(id){
   if(id===cur&&id!=='home'&&id!=='project')id='home';
   if(id==='home'&&cur==='project')id='projects';
-  // Fermer toutes les pages
   Object.values(PAGE_MAP).forEach(function(pid){
     var el=document.getElementById(pid);
     if(el)el.classList.remove('active');
@@ -409,7 +408,6 @@ function pdShow(animate){
 }
 function pdNext(){_pdIdx=Math.min(_pdIdx+1,_pdTotal-1);pdShow();}
 function pdPrev(){_pdIdx=Math.max(_pdIdx-1,0);pdShow();}
-
 function openProject(i){
   _currentProjectIdx=i;
   var p=LANG==='en'?PROJECTS_EN[i]:PROJECTS[i];
@@ -417,7 +415,6 @@ function openProject(i){
   var car=document.getElementById('pd-carousel');
   var dots=document.getElementById('pd-dots');
   car.innerHTML='';dots.innerHTML='';
-  // Slides images
   p.imgs.forEach(function(src,j){
     var slide=document.createElement('div');slide.className='pd-slide';
     var img=document.createElement('img');img.src=src;img.alt=p.name+' '+(j+1);
@@ -427,7 +424,6 @@ function openProject(i){
     (function(idx){dot.addEventListener('click',function(){_pdIdx=idx;pdShow();});})(j);
     dots.appendChild(dot);
   });
-  // Slide texte
   var textSlide=document.createElement('div');textSlide.className='pd-text-slide';
   var metaHTML='<div class="pd-meta">';
   [{l:metaLabels[0],v:p.year},{l:metaLabels[1],v:p.loc},{l:metaLabels[2],v:p.type},{l:metaLabels[3],v:p.atelier}].forEach(function(r){
@@ -445,58 +441,48 @@ function openProject(i){
   pdShow(false);
   showPage('project');
 }
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('lb').classList.contains('open')){
+    if(e.key==='Escape')lbClose();
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')lbNext();
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')lbPrev();
+    return;
+  }
+  var order=['home','about','projects','contacts'];
+  var idx=order.indexOf(cur==='project'?'projects':cur);
+  if(e.key==='ArrowDown'){e.preventDefault();showPage(order[(idx+1)%order.length]);}
+  if(e.key==='ArrowUp'){e.preventDefault();showPage(order[(idx-1+order.length)%order.length]);}
+  if(e.key==='ArrowLeft'){
+    if(cur==='about')prevSlide();
+    if(cur==='projects')prevProject();
+    if(cur==='project')pdPrev();
+  }
+  if(e.key==='ArrowRight'){
+    if(cur==='about')nextSlide();
+    if(cur==='projects')nextProject();
+    if(cur==='project')pdNext();
+  }
+  if(e.key==='Enter'){
+    if(cur==='home')showPage('about');
+    else if(cur==='projects'){
+      var realIdx=((window._vActive||0)%PROJECTS.length+PROJECTS.length)%PROJECTS.length;
+      openProject(realIdx);
+    }
+    else if(cur==='project'){
+      var p=LANG==='en'?PROJECTS_EN[_currentProjectIdx]:PROJECTS[_currentProjectIdx];
+      if(_pdIdx<p.imgs.length)lbOpen(_pdIdx,p.imgs);
+    }
+  }
+  if(e.key==='Escape'){
+    if(cur==='project')showPage('projects');
+    else if(cur==='about'||cur==='projects'||cur==='contacts')showPage('home');
+  }
+});
 document.getElementById('pd').addEventListener('wheel',function(e){
   e.preventDefault();
   if(e.deltaY>30)pdNext();
   else if(e.deltaY<-30)pdPrev();
 },{passive:false});
-document.addEventListener('keydown',function(e){
-  // Echap = retour home depuis partout
-  if(e.key==='Escape'){
-    if(document.getElementById('lb').classList.contains('open')){lbClose();}
-    else{showPage('home');}
-    return;
-  }
-  // Lightbox ouverte
-  if(document.getElementById('lb').classList.contains('open')){
-    if(e.key==='ArrowRight'||e.key==='ArrowDown')lbNext();
-    if(e.key==='ArrowLeft'||e.key==='ArrowUp')lbPrev();
-    if(e.key==='Enter')lbClose();
-    return;
-  }
-  if(cur==='home'){
-    if(e.key==='Enter'||e.key==='ArrowDown')showPage('about');
-    if(e.key==='ArrowUp')showPage('contacts');
-  }
-  if(cur==='about'){
-    if(e.key==='ArrowRight')nextSlide();
-    if(e.key==='ArrowLeft')prevSlide();
-    if(e.key==='ArrowDown')showPage('projects');
-    if(e.key==='ArrowUp')showPage('contacts');
-    if(e.key==='Enter')showPage('projects');
-  }
-  if(cur==='projects'){
-    if(e.key==='ArrowRight')nextProject();
-    if(e.key==='ArrowLeft')prevProject();
-    if(e.key==='ArrowDown')showPage('contacts');
-    if(e.key==='ArrowUp')showPage('about');
-    if(e.key==='Enter'){
-      var idx=((window._vActive||0)%PROJECTS.length+PROJECTS.length)%PROJECTS.length;
-      openProject(idx);
-    }
-  }
-  if(cur==='project'){
-    if(e.key==='ArrowRight'){e.preventDefault();pdNext();}
-    if(e.key==='ArrowLeft'){e.preventDefault();pdPrev();}
-    if(e.key==='ArrowDown'){showPage('contacts');}
-    if(e.key==='ArrowUp'){showPage('projects');}
-    return;
-  }
-  if(cur==='contacts'){
-    if(e.key==='ArrowUp')showPage('projects');
-    if(e.key==='ArrowDown')showPage('about');
-  }
-});
 var _lbImgs=[];
 function lbOpen(idx,imgs){_lbImgs=imgs;window._lbIdx=idx;lbShow();document.getElementById('lb').classList.add('open');}
 function lbClose(){document.getElementById('lb').classList.remove('open');}
@@ -515,10 +501,8 @@ function toggleLang(e){
   e.stopPropagation();
   LANG=LANG==='fr'?'en':'fr';
   document.getElementById('lang-btn').textContent=LANG==='fr'?'EN':'FR';
-  // Nav
   var navLabels=LANG==='fr'?['à propos','projets','contact']:['about','projects','contact'];
   ['nl-about','nl-projects','nl-contacts'].forEach(function(id,i){document.getElementById(id).textContent=navLabels[i];});
-  // About slides
   var abData={
     fr:[
       {h:'Formation',entries:[{s:'École Polytechnique Fédérale de Lausanne — EPFL',descs:['Master en Architecture — 2023/2026','Bachelor en Architecture — 2019/2022']}]},
@@ -546,7 +530,6 @@ function toggleLang(e){
     html+='</div>';
     slide.innerHTML=html;
   });
-  // Projet ouvert
   if(_currentProjectIdx>=0&&cur==='project'){
     var metaLabels=LANG==='fr'?['Année','Lieu','Type','Atelier']:['Year','Location','Type','Studio'];
     var p=LANG==='en'?PROJECTS_EN[_currentProjectIdx]:PROJECTS[_currentProjectIdx];
