@@ -9,7 +9,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 a{color:inherit;text-decoration:none}
-button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;padding:0}
+button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;padding:0;outline:none}
 :root{
   --bg:#ffffff;--hbg:#F5F5F5;--tx:#000000;--mu:#999996;--accent:#FF3D00;
   --font:'IBM Plex Mono','Courier New',monospace;
@@ -51,9 +51,9 @@ header:hover h1{transform:scale(1.06)}
 .ab-arrow:hover{opacity:0.75}
 .ab-al{left:0;top:50%;transform:translateY(-50%)}
 .ab-ar{right:0;top:50%;transform:translateY(-50%)}
-.ab-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
-.ab-dot{width:4px;height:4px;border-radius:50%;background:var(--tx);opacity:0.2;transition:opacity 0.2s}
-.ab-dot.on{opacity:0.7}
+.ab-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.ab-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0.25;transition:opacity 0.2s;cursor:pointer;}
+.ab-dot.on{opacity:1}
 #pp{overflow:hidden}
 .pc-track{position:absolute;top:0;bottom:0;display:flex;align-items:center;transition:transform var(--ease)}
 .pc-card{flex:0 0 auto;cursor:pointer;transition:transform var(--ease),opacity var(--ease)}
@@ -63,23 +63,28 @@ header:hover h1{transform:scale(1.06)}
 .pc-meta{font-size:0.58rem;font-weight:300;color:var(--mu);margin-top:2px;text-align:center}
 .par{position:absolute;font-size:2rem;color:var(--accent);padding:16px 20px;opacity:0.6;transition:opacity 0.2s;cursor:pointer;font-weight:300;z-index:20}
 .par:hover{opacity:0.75}
-.pc-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
-.pc-dot{width:4px;height:4px;border-radius:50%;background:var(--tx);opacity:0.2;transition:opacity 0.2s}
-.pc-dot.on{opacity:0.7}
+.pc-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.pc-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0.25;transition:opacity 0.2s;cursor:pointer;}
+.pc-dot.on{opacity:1}
 #pd{overflow:hidden}
-.pd-layout{position:absolute;inset:0;display:flex;flex-direction:row;align-items:stretch;gap:20px;}
-.pd-images{flex:0 0 58%;overflow-y:auto;padding:calc(var(--hh)+14px) 20px 40px;display:flex;flex-direction:column;gap:6px;}
-.pd-images::-webkit-scrollbar{display:none}
-.pd-img-item{width:100%;background:#e8e8e8;flex-shrink:0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--mu);font-size:0.54rem;letter-spacing:0.1em;cursor:pointer;}
-.pd-img-item img{width:100%;height:auto;display:block;cursor:pointer;}
-.pd-info{flex:0 0 42%;overflow-y:auto;padding:calc(var(--hh) + 80px) 32px 40px 28px;display:flex;flex-direction:column;}
-.pd-info::-webkit-scrollbar{display:none}
-.pd-title{font-size:1.4rem;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;line-height:1.1;margin-bottom:20px;color:var(--accent);}
-.pd-desc{font-size:0.62rem;font-weight:300;line-height:1.95;margin-bottom:28px;opacity:0.85;white-space:pre-line;}
-.pd-meta{display:flex;flex-direction:column;gap:12px}
-.pd-meta-row{display:flex;flex-direction:column;gap:2px}
+.pd-carousel{position:absolute;inset:0;display:flex;transition:transform 0.65s cubic-bezier(0.4,0,0.2,1);}
+.pd-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;padding:calc(var(--hh)+20px) 40px 40px;}
+.pd-slide img{max-width:100%;max-height:100%;object-fit:contain;cursor:pointer;}
+.pd-text-slide{flex:0 0 100%;height:100%;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:calc(var(--hh)+20px) 0 40px;text-align:center;}
+.pd-text-inner{width:100%;max-width:calc(100% - 6*var(--margin));}
+.pd-text-slide::-webkit-scrollbar{display:none}
+.pd-title{font-size:1.4rem;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;line-height:1.1;margin-bottom:24px;color:var(--accent);}
+.pd-desc{font-size:0.62rem;font-weight:300;line-height:1.95;margin-bottom:0;opacity:0.85;white-space:pre-line;}
+.pd-meta{display:flex;flex-direction:row;justify-content:space-between;width:calc(100% - 2*var(--margin));position:absolute;bottom:12%;left:var(--margin);right:var(--margin);}
+.pd-meta-row{display:flex;flex-direction:column;gap:2px;align-items:center;}
 .pd-meta-label{font-size:0.52rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--mu);}
 .pd-meta-val{font-size:0.62rem;font-weight:300;line-height:1.7}
+.pd-arr{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--accent);padding:16px 20px;opacity:0.6;cursor:pointer;font-weight:300;z-index:20;background:none;border:none;}
+.pd-arr:hover{opacity:1}
+#pd-prev{left:0}#pd-next{right:0}
+.pd-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:20}
+.pd-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0.25;transition:opacity 0.2s;cursor:pointer;}
+.pd-dot.on{opacity:1}
 #pcont{display:flex;align-items:center;justify-content:center}
 .ci{text-align:center;font-size:0.74rem;font-weight:300;letter-spacing:0.06em;line-height:2.3;color:var(--accent)}
 .ci a,.ci span{display:block}
@@ -108,7 +113,7 @@ header:hover h1{transform:scale(1.06)}
 <div id='vp'>
   <div id='ph' class='page active'></div>
   <div id='pa' class='page'>
-    <img src='https://zzmayel.github.io/website/mael-zahaf_web.jpg' alt='Maël Zahaf' style='position:absolute;left:50%;transform:translateX(-50%);top:10%;width:52px;height:70px;object-fit:cover;object-position:top;z-index:5;pointer-events:none;display:block;'/>
+    <img src='https://zzmayel.github.io/website/mael-zahaf_web_1.jpg' alt='Maël Zahaf' style='position:absolute;left:50%;transform:translateX(-50%);top:6%;width:104px;height:140px;object-fit:cover;object-position:top;z-index:5;pointer-events:none;display:block;'/>
     <div class='ab-track' id='ab-track'>
       <div class='ab-slide' data-idx='0'>
         <div class='ab-h'>Formation</div>
@@ -147,14 +152,10 @@ header:hover h1{transform:scale(1.06)}
     <div class='pc-dots' id='pc-dots'></div>
   </div>
   <div id='pd' class='page'>
-    <div class='pd-layout'>
-      <div class='pd-images' id='pd-images'></div>
-      <div class='pd-info'>
-        <div class='pd-title' id='pd-title'></div>
-        <div class='pd-desc' id='pd-desc'></div>
-        <div class='pd-meta' id='pd-meta'></div>
-      </div>
-    </div>
+    <div class='pd-carousel' id='pd-carousel'></div>
+    <button class='pd-arr' id='pd-prev' onclick='pdPrev()'>&#8249;</button>
+    <button class='pd-arr' id='pd-next' onclick='pdNext()'>&#8250;</button>
+    <div class='pd-dots' id='pd-dots'></div>
   </div>
   <div id='pcont' class='page'>
     <div class='ci'>
@@ -224,19 +225,19 @@ var PROJECTS=[
      'https://zzmayel.github.io/website/project%203%20-%20off%20the%20road/mael-zahaf_off-the-road_11.jpg'
    ]},
   {name:'Constructing The View 1',loc:'Lausanne, CH',year:'2022',type:'Image, recherche',atelier:'CTW — Philipp Schaerer',
-   desc:"L'intérêt de l'exercice est de concevoir des architectures imaginaires, conçues comme des assemblages de surfaces hétérogènes. Chaque bâtiment est composé à partir d'un collage de matériaux divers.\n\nL'intention n'est pas de proposer un projet architectural en soi, mais d'explorer une méthode de conception par l'image.",
+   desc:"L'intérêt de l'exercice est de concevoir des architectures imaginaires, conçues comme des assemblages de surfaces hétérogènes. Chaque bâtiment est composé à partir d'un collage de matériaux divers dont la juxtaposition produit une image à la fois abstraite et construite.\n\nL'intention n'est pas de proposer un projet architectural en soi, mais plutôt d'explorer une méthode de conception par l'image. Ces compositions fonctionnent comme des objets intermédiaires : elles précèdent le projet, en testant des rapports de masses, de textures et de proportions sans contrainte programmatique.\n\nCes architectures spéculatives agissent comme un outil de recherche visuelle, où le projet pourrait potentiellement émerger après coup. L'image devient alors un terrain d'expérimentation autonome, capable de générer des intuitions spatiales et matérielles avant toute formalisation architecturale.",
    imgs:[
-     'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw1_1.jpg',
-     'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw1_2.jpg'
+     'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw_1_1.jpg',
+     'https://zzmayel.github.io/website/project%204%20-%20constructing%20the%20view%201/mael-zahaf_ctw_1_2.jpg'
    ]},
   {name:'Hétérotopies',loc:'Lausanne, CH',year:'2025',type:'Maquette, représentation',atelier:'TEXAS',
-   desc:"Cette image représente une photographie de maquette réalisée avec un assemblage de papier composant une scène domestique fragmentaire.\n\nElle peut être comprise comme une hétérotopie au sens de Foucault : un espace réel et irréel à la fois, juxtaposant intimité domestique et neutralité abstraite de la maquette.",
+   desc:"Cette image représente une photographie de maquette réalisée avec un assemblage de papier. L'assemblage de plans, de surfaces imprimées et d'objets réduits compose une scène domestique fragmentaire, à la fois familière et artificielle. L'espace évoque une chambre et une salle de bain, suggérant implicitement la nuit de noces comme moment inaugural, intime et ritualisé.\n\nCependant, cette scène ne cherche pas à représenter une réalité habitée, mais plutôt à produire une distance critique. En ce sens, elle peut être comprise comme une \"hétérotopie\" au sens de Michel Foucault dans Des espaces autres : un espace en dehors du monde, à la fois réel et irréel, qui juxtapose plusieurs régimes de sens.\n\nLe recours à la maquette en papier renforce cette ambiguïté. Les matériaux pauvres, les surfaces planes et les détails volontairement simplifiés inscrivent l'image dans une logique de représentation plutôt que de simulation. La scène devient alors un espace construit pour être regardé, un lieu de projection mentale plutôt qu'un lieu vécu.\n\nCette approche s'inscrit dans une proximité avec le travail de Thomas Demand, dont les reconstructions en papier rejouent des situations existantes en les vidant de leur contingence.",
    imgs:[
-     'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_1.jpg',
-     'https://zzmayel.github.io/website/project%205%20-%20h%C3%A9t%C3%A9rotopies/mael-zahaf_heterotopie_2.jpg'
+     'https://zzmayel.github.io/website/project%205%20-%20he%CC%81te%CC%81rotopies/mael-zahaf_heterotopie_1.jpg',
+     'https://zzmayel.github.io/website/project%205%20-%20he%CC%81te%CC%81rotopies/mael-zahaf_heterotopie_2.jpg'
    ]},
   {name:'Constructing The View 2',loc:'Lausanne, CH',year:'2024',type:'Image, montage',atelier:'CTW — Philipp Schaerer',
-   desc:"Ces images sont construites par assemblage d'éléments hétérogènes issus de contextes réels. Par le montage, ces éléments conservent leur qualité documentaire tout en étant déplacés de leur contexte d'origine.\n\nL'enjeu est de produire des images réalistes dans leur matérialité mais dont la logique spatiale demeure irréelle.",
+   desc:"Ces images sont construites par assemblage d'éléments hétérogènes issus de contextes réels (fragments d'architecture ordinaire, paysages, objets ou structures) recomposés en une seule image cohérente. Par le montage, ces éléments conservent leur qualité documentaire tout en étant déplacés de leur contexte d'origine.\n\nL'enjeu est de produire des images qui paraissent réalistes dans leur matérialité, leur lumière et leur précision photographique, mais dont la logique spatiale demeure profondément irréelle. Les situations représentées sont plausibles dans le détail, mais impossibles dans leur totalité.\n\nCe travail repose ainsi sur une tension entre reconnaissance et étrangeté. L'image est immédiatement lisible : elle mobilise des formes connues, des typologies existantes, mais elle résiste à une interprétation stable. Les rapports d'échelle produisent un léger déplacement, une dissonance qui empêche toute adhésion complète au réel.\n\nL'assemblage devient alors outil de projet : en manipulant le réel plutôt qu'en l'inventant ex nihilo, il permet de révéler ses limites, ses contradictions et ses potentiels latents. Ces images ne décrivent pas un projet, mais construisent un champ de possibilités où le projet pourrait advenir.",
    imgs:[
      'https://zzmayel.github.io/website/project%206%20constructing%20the%20view%202/mael-zahaf_ctw_2_1.jpeg',
      'https://zzmayel.github.io/website/project%206%20constructing%20the%20view%202/mael-zahaf_ctw_2_2.jpeg',
@@ -281,8 +282,12 @@ function applyNav(page){
 }
 function showPage(id){
   if(id===cur&&id!=='home'&&id!=='project')id='home';
-  var prevEl=document.getElementById(PAGE_MAP[cur]);
-  if(prevEl)prevEl.classList.remove('active');
+  if(id==='home'&&cur==='project')id='projects';
+  // Fermer toutes les pages
+  Object.values(PAGE_MAP).forEach(function(pid){
+    var el=document.getElementById(pid);
+    if(el)el.classList.remove('active');
+  });
   var navId=(id==='project')?'projects':id;
   els.slice(1,4).forEach(function(el){el.classList.toggle('on',el.id==='nl-'+navId);});
   cur_target=navId;
@@ -309,6 +314,7 @@ setTimeout(function(){applyNav('home');},100);
   after.forEach(function(c){track.appendChild(c);});
   var vSlide=0;
   var abDots=dotsEl.querySelectorAll('.ab-dot');
+  abDots.forEach(function(d,i){d.addEventListener('click',function(){goSlide(i-N+N);});});
   function ri(){return vSlide+N;}
   function goSlide(n){
     vSlide=n;
@@ -346,7 +352,11 @@ setTimeout(function(){applyNav('home');},100);
   before.forEach(function(c){track.appendChild(c);});
   orig.forEach(function(c){track.appendChild(c);});
   after.forEach(function(c){track.appendChild(c);});
-  PROJECTS.forEach(function(){var dot=document.createElement('div');dot.className='pc-dot';dotsEl.appendChild(dot);});
+  PROJECTS.forEach(function(_,i){
+    var dot=document.createElement('div');dot.className='pc-dot';
+    dot.addEventListener('click',function(){goProject(i);});
+    dotsEl.appendChild(dot);
+  });
   var all=Array.from(track.querySelectorAll('.pc-card'));
   var TOTAL=all.length,vActive=0;
   function ri(){return vActive+NP;}
@@ -374,7 +384,7 @@ setTimeout(function(){applyNav('home');},100);
     if(vActive<0){vActive+=NP;update(false);track.offsetHeight;}
     else if(vActive>=NP){vActive-=NP;update(false);track.offsetHeight;}
   });
-  window.goProject=function(n){vActive=n;update(true);};
+  window.goProject=function(n){vActive=n;window._vActive=vActive;update(true);};
   window.nextProject=function(){goProject(vActive+1);};
   window.prevProject=function(){goProject(vActive-1);};
   all.forEach(function(card,i){
@@ -390,43 +400,101 @@ setTimeout(function(){applyNav('home');},100);
   update(false);
   window.addEventListener('resize',function(){update(false);});
 })();
+var _pdIdx=0,_pdTotal=0;
+function pdShow(animate){
+  var car=document.getElementById('pd-carousel');
+  car.style.transition=animate===false?'none':'transform 0.65s cubic-bezier(0.4,0,0.2,1)';
+  car.style.transform='translateX('+(-_pdIdx*100)+'%)';
+  document.querySelectorAll('.pd-dot').forEach(function(d,i){d.classList.toggle('on',i===_pdIdx);});
+}
+function pdNext(){_pdIdx=Math.min(_pdIdx+1,_pdTotal-1);pdShow();}
+function pdPrev(){_pdIdx=Math.max(_pdIdx-1,0);pdShow();}
+
 function openProject(i){
-  var p=PROJECTS[i];
-  document.getElementById('pd-title').textContent=p.name;
-  document.getElementById('pd-desc').textContent=p.desc;
-  var imgs=document.getElementById('pd-images');
-  imgs.innerHTML='';imgs.scrollTop=0;
+  _currentProjectIdx=i;
+  var p=LANG==='en'?PROJECTS_EN[i]:PROJECTS[i];
+  var metaLabels=LANG==='fr'?['Année','Lieu','Type','Atelier']:['Year','Location','Type','Studio'];
+  var car=document.getElementById('pd-carousel');
+  var dots=document.getElementById('pd-dots');
+  car.innerHTML='';dots.innerHTML='';
+  // Slides images
   p.imgs.forEach(function(src,j){
-    var d=document.createElement('div');d.className='pd-img-item';
+    var slide=document.createElement('div');slide.className='pd-slide';
     var img=document.createElement('img');img.src=src;img.alt=p.name+' '+(j+1);
     img.addEventListener('click',(function(idx){return function(){lbOpen(idx,p.imgs);};})(j));
-    d.innerHTML='';d.appendChild(img);
-    imgs.appendChild(d);
+    slide.appendChild(img);car.appendChild(slide);
+    var dot=document.createElement('div');dot.className='pd-dot';
+    (function(idx){dot.addEventListener('click',function(){_pdIdx=idx;pdShow();});})(j);
+    dots.appendChild(dot);
   });
-  var meta=document.getElementById('pd-meta');
-  meta.innerHTML='';
-  [{l:'Année',v:p.year},{l:'Lieu',v:p.loc},{l:'Type',v:p.type},{l:'Atelier',v:p.atelier}].forEach(function(r){
+  // Slide texte
+  var textSlide=document.createElement('div');textSlide.className='pd-text-slide';
+  var metaHTML='<div class="pd-meta">';
+  [{l:metaLabels[0],v:p.year},{l:metaLabels[1],v:p.loc},{l:metaLabels[2],v:p.type},{l:metaLabels[3],v:p.atelier}].forEach(function(r){
     if(!r.v)return;
-    var row=document.createElement('div');row.className='pd-meta-row';
-    var lbl=document.createElement('div');lbl.className='pd-meta-label';lbl.textContent=r.l;
-    var val=document.createElement('div');val.className='pd-meta-val';val.textContent=r.v;
-    row.appendChild(lbl);row.appendChild(val);meta.appendChild(row);
+    metaHTML+='<div class="pd-meta-row"><div class="pd-meta-label">'+r.l+'</div><div class="pd-meta-val">'+r.v+'</div></div>';
   });
+  metaHTML+='</div>';
+  textSlide.innerHTML='<div class="pd-text-inner"><div class="pd-title">'+p.name+'</div><div class="pd-desc">'+p.desc.replace(/\n/g,'<br>')+'</div>'+metaHTML+'</div>';
+  car.appendChild(textSlide);
+  var dot=document.createElement('div');dot.className='pd-dot';
+  (function(idx){dot.addEventListener('click',function(){_pdIdx=idx;pdShow();});})(p.imgs.length);
+  dots.appendChild(dot);
+  _pdTotal=p.imgs.length+1;
+  _pdIdx=0;
+  pdShow(false);
   showPage('project');
 }
 document.getElementById('pd').addEventListener('wheel',function(e){
   e.preventDefault();
-  var d=e.deltaY||e.deltaX;
-  document.getElementById('pd-images').scrollTop+=d;
-  document.querySelector('.pd-info').scrollTop+=d;
+  if(e.deltaY>30)pdNext();
+  else if(e.deltaY<-30)pdPrev();
 },{passive:false});
 document.addEventListener('keydown',function(e){
-  if(cur==='about'){if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide();}
-  if(cur==='projects'){if(e.key==='ArrowRight')nextProject();if(e.key==='ArrowLeft')prevProject();}
+  // Echap = retour home depuis partout
+  if(e.key==='Escape'){
+    if(document.getElementById('lb').classList.contains('open')){lbClose();}
+    else{showPage('home');}
+    return;
+  }
+  // Lightbox ouverte
   if(document.getElementById('lb').classList.contains('open')){
     if(e.key==='ArrowRight'||e.key==='ArrowDown')lbNext();
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')lbPrev();
-    if(e.key==='Escape')lbClose();
+    if(e.key==='Enter')lbClose();
+    return;
+  }
+  if(cur==='home'){
+    if(e.key==='Enter'||e.key==='ArrowDown')showPage('about');
+    if(e.key==='ArrowUp')showPage('contacts');
+  }
+  if(cur==='about'){
+    if(e.key==='ArrowRight')nextSlide();
+    if(e.key==='ArrowLeft')prevSlide();
+    if(e.key==='ArrowDown')showPage('projects');
+    if(e.key==='ArrowUp')showPage('contacts');
+    if(e.key==='Enter')showPage('projects');
+  }
+  if(cur==='projects'){
+    if(e.key==='ArrowRight')nextProject();
+    if(e.key==='ArrowLeft')prevProject();
+    if(e.key==='ArrowDown')showPage('contacts');
+    if(e.key==='ArrowUp')showPage('about');
+    if(e.key==='Enter'){
+      var idx=((window._vActive||0)%PROJECTS.length+PROJECTS.length)%PROJECTS.length;
+      openProject(idx);
+    }
+  }
+  if(cur==='project'){
+    if(e.key==='ArrowRight'){e.preventDefault();pdNext();}
+    if(e.key==='ArrowLeft'){e.preventDefault();pdPrev();}
+    if(e.key==='ArrowDown'){showPage('contacts');}
+    if(e.key==='ArrowUp'){showPage('projects');}
+    return;
+  }
+  if(cur==='contacts'){
+    if(e.key==='ArrowUp')showPage('projects');
+    if(e.key==='ArrowDown')showPage('about');
   }
 });
 var _lbImgs=[];
@@ -447,9 +515,68 @@ function toggleLang(e){
   e.stopPropagation();
   LANG=LANG==='fr'?'en':'fr';
   document.getElementById('lang-btn').textContent=LANG==='fr'?'EN':'FR';
+  // Nav
   var navLabels=LANG==='fr'?['à propos','projets','contact']:['about','projects','contact'];
   ['nl-about','nl-projects','nl-contacts'].forEach(function(id,i){document.getElementById(id).textContent=navLabels[i];});
+  // About slides
+  var abData={
+    fr:[
+      {h:'Formation',entries:[{s:'École Polytechnique Fédérale de Lausanne — EPFL',descs:['Master en Architecture — 2023/2026','Bachelor en Architecture — 2019/2022']}]},
+      {h:'Studio',entries:[{s:'TEXAS — Eric Lapierre',yr:'2025'},{s:'PIOVENE&amp;FABI — Ambra Fabi / Giovanni Piovene',yr:'2024'},{s:'TEXAS — Eric Lapierre',yr:'2022'},{s:'ULT_BELLINZONA — Catherine Gay / Götz Menzel',yr:'2021'},{s:'MANSLAB — Marco Bakker / Alexandre Blanc',yr:'2020/2021'},{s:'ALICE Y1 — Dieter Dietz / Mattia Pretolani',yr:'2019/2020'}]},
+      {h:'Expérience',entries:[{s:'Stage : ass architectes associés sa',descs:["Concours et développement d'une école et d'une patinoire."],yr:'2022/2023'},{s:'Stage : cut architectures',descs:['Boutiques du Louvre, Villa Médicis.'],yr:'2023'},{s:'Stage : ellipse architecture',descs:['Rénovation résidentielle, relevés, études de faisabilité.'],yr:'7 mois — 2023/2024'}]}
+    ],
+    en:[
+      {h:'Education',entries:[{s:'Swiss Federal Institute of Technology — EPFL',descs:['Master in Architecture — 2023/2026','Bachelor in Architecture — 2019/2022']}]},
+      {h:'Studio',entries:[{s:'TEXAS — Eric Lapierre',yr:'2025'},{s:'PIOVENE&amp;FABI — Ambra Fabi / Giovanni Piovene',yr:'2024'},{s:'TEXAS — Eric Lapierre',yr:'2022'},{s:'ULT_BELLINZONA — Catherine Gay / Götz Menzel',yr:'2021'},{s:'MANSLAB — Marco Bakker / Alexandre Blanc',yr:'2020/2021'},{s:'ALICE Y1 — Dieter Dietz / Mattia Pretolani',yr:'2019/2020'}]},
+      {h:'Experience',entries:[{s:'Internship : ass architectes associés sa',descs:['Competitions and design of a school and an ice rink.'],yr:'2022/2023'},{s:'Internship : cut architectures',descs:['Boutiques du Louvre, Villa Médicis.'],yr:'2023'},{s:'Internship : ellipse architecture',descs:['Residential renovation, site surveys, feasibility studies.'],yr:'7 months — 2023/2024'}]}
+    ]
+  };
+  var allSlides=Array.from(document.getElementById('ab-track').querySelectorAll('.ab-slide'));
+  allSlides.forEach(function(slide){
+    var idx=parseInt(slide.getAttribute('data-idx'));
+    if(isNaN(idx))return;
+    var sd=abData[LANG][idx];if(!sd)return;
+    var html='<div class="ab-h">'+sd.h+'</div><div class="ab-body">';
+    sd.entries.forEach(function(en){
+      html+='<div class="ab-entry"><strong>'+en.s+'</strong>';
+      if(en.descs)en.descs.forEach(function(d){html+='<span class="ab-desc">'+d+'</span>';});
+      if(en.yr)html+='<span class="ab-yr">'+en.yr+'</span>';
+      html+='</div>';
+    });
+    html+='</div>';
+    slide.innerHTML=html;
+  });
+  // Projet ouvert
+  if(_currentProjectIdx>=0&&cur==='project'){
+    var metaLabels=LANG==='fr'?['Année','Lieu','Type','Atelier']:['Year','Location','Type','Studio'];
+    var p=LANG==='en'?PROJECTS_EN[_currentProjectIdx]:PROJECTS[_currentProjectIdx];
+    document.getElementById('pd-title').textContent=p.name;
+    document.getElementById('pd-desc').textContent=p.desc;
+    var meta=document.getElementById('pd-meta');meta.innerHTML='';
+    [{l:metaLabels[0],v:p.year},{l:metaLabels[1],v:p.loc},{l:metaLabels[2],v:p.type},{l:metaLabels[3],v:p.atelier}].forEach(function(r){
+      if(!r.v)return;
+      var row=document.createElement('div');row.className='pd-meta-row';
+      var lbl=document.createElement('div');lbl.className='pd-meta-label';lbl.textContent=r.l;
+      var val=document.createElement('div');val.className='pd-meta-val';val.textContent=r.v;
+      row.appendChild(lbl);row.appendChild(val);meta.appendChild(row);
+    });
+  }
 }
+var _currentProjectIdx=-1;
+var PROJECTS_EN=[
+  {name:'Fondazione Berio',loc:'Milano, IT',year:'2024',type:'Culture, Public building',atelier:'PIOVENE&FABI',imgs:PROJECTS[0].imgs,
+   desc:"Anchored on Corso Sempione, the project follows in the continuity of a significant architectural and cultural history. It brings together the former RAI program, once housed in the building designed by Gio Ponti.\n\nThe Fondazione Berio becomes a place where architecture and music dialogue, where heritage and innovation meet.\n\nAt the heart of the building, a concert hall stands in a vast atrium. Around it, seven floors of archives house a precious collection of audio media."},
+  {name:'Oasis PCF',loc:'Sarcelles, FR',year:'2025',type:'Housing, transformation',atelier:'TEXAS',imgs:PROJECTS[1].imgs,
+   desc:"The project is located in Sarcelles, in the Lochères neighborhood. It reinterprets housing through Michel Foucault's concept of heterotopias.\n\nThe project is organized around a shared central space: the living room — the beating heart of the structure, anchor point for four apartments that connect to it like branches around a trunk."},
+  {name:'Off the Road',loc:'Marseille, FR',year:'2023',type:'Housing, transformation',atelier:'TEXAS',imgs:PROJECTS[2].imgs,
+   desc:"The Beat Generation represents a sulfurous literary movement of the 20th century. Advocating spirituality, the beatniks seek travel — physical or psychedelic.\n\nConceived as a poetry center dedicated to the heirs of beatnik counter-culture, it houses a residence for six to ten artists, an exhibition room, a library, and a café."},
+  {name:'Constructing The View 1',loc:'Lausanne, CH',year:'2022',type:'Image, research',atelier:'CTW — Philipp Schaerer',imgs:PROJECTS[3].imgs,
+   desc:"The exercise consists in designing imaginary architectures conceived as assemblages of heterogeneous surfaces. Each building is composed from a collage of diverse materials whose juxtaposition produces an image that is simultaneously abstract and constructed.\n\nThe intention is not to propose an architectural project as such, but to explore a method of design through image-making. These compositions function as intermediary objects, testing relationships of mass, texture, and proportion without programmatic constraints."},
+  {name:'Heterotopies',loc:'Lausanne, CH',year:'2025',type:'Model, representation',atelier:'TEXAS',imgs:PROJECTS[4].imgs,
+   desc:"This image is a photograph of a paper model. The assembly of plans, printed surfaces, and miniature objects composes a fragmentary domestic scene, simultaneously familiar and artificial.\n\nIt can be understood as a 'heterotopia' in the sense of Michel Foucault: a space outside the world, simultaneously real and unreal, juxtaposing domestic intimacy, the symbolic staging of the couple, and the abstract neutrality of the model.\n\nThis approach is close to the work of Thomas Demand, whose paper reconstructions replay existing situations by emptying them of contingency."},
+  {name:'Constructing The View 2',loc:'Lausanne, CH',year:'2024',type:'Image, montage',atelier:'CTW — Philipp Schaerer',imgs:PROJECTS[5].imgs,
+   desc:"These images are built by assembling heterogeneous elements drawn from real contexts — fragments of ordinary architecture, landscapes, objects — recomposed into a single coherent image.\n\nThe aim is to produce images that appear realistic in their materiality and photographic precision, yet whose spatial logic remains deeply unreal. The work rests on a tension between recognition and strangeness that prevents any complete adherence to the real."}
+];
 </script>
 </body>
 </html>
